@@ -1,0 +1,3 @@
+[submodule "third_party/Integrated_Patcher_3"]
+	path = third_party/Integrated_Patcher_3
+	url = https://github.com/rany2/Integrated_Patcher_3
