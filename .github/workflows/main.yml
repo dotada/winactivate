@@ -27,7 +27,7 @@ jobs:
         rm llvm-mingw-20220323-msvcrt-ubuntu-18.04-x86_64.tar.xz
         PATH=$PWD/llvm-mingw-20220323-msvcrt-ubuntu-18.04-x86_64/bin:$PATH ./build.sh
         rm -rf llvm-mingw-20220323-msvcrt-ubuntu-18.04-x86_64
-        zip -r winactivate-${{ steps.get_version.outputs.VERSION }}.zip .
+        zip -r winactivate-${{ steps.get_version.outputs.VERSION }}.zip README.md LICENSE bin/ winactivate.cmd winactivate.ps1 -x '*/.keep'
     - uses: ncipollo/release-action@v1
       with:
         artifacts: "winactivate-*.zip"

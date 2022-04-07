@@ -340,7 +340,7 @@ Push-Location -Path $PSScriptRoot
 
 Write-Host @'
 =============================================================
-winactivate v2.0 - https://github.com/luzeadev/winactivate
+winactivate - https://github.com/rany2/winactivate
 =============================================================
 
 '@
