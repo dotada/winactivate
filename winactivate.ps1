@@ -368,8 +368,8 @@ if ($arch -eq 'ARM64') {
     $arm64_file = ''
 }
 
-Remove-Item -Path "$PSScriptRoot\gatherosstate.exe" -Force | Out-Null
-Remove-Item -Path "$PSScriptRoot\slc.dll" -Force | Out-Null
+Remove-Item -Path "$PSScriptRoot\gatherosstate.exe" -Force 2>&1 | Out-Null
+Remove-Item -Path "$PSScriptRoot\slc.dll" -Force 2>&1 | Out-Null
 Copy-Item -Path "$PSScriptRoot\bin\$($arm64_file)gatherosstate.exe" -Destination "$PSScriptRoot\gatherosstate.exe" -Force
 Copy-Item -Path "$PSScriptRoot\bin\$($arm64_file)slc.dll" -Destination "$PSScriptRoot\slc.dll" -Force
 
