@@ -356,6 +356,23 @@ if ($Build -lt 10240) {
     Exit-Script -ExitCode 1
 }
 
+$arch = (Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" -Name "PROCESSOR_ARCHITECTURE" -ErrorAction SilentlyContinue).PROCESSOR_ARCHITECTURE
+if ($arch -eq $null) {
+    Write-Error 'Unable to determine processor architecture.'
+    Exit-Script -ExitCode 1
+}
+
+if ($arch -eq 'ARM64') {
+    $arm64_file = 'arm64_'
+} else {
+    $arm64_file = ''
+}
+
+Remove-Item -Force "$PSScriptRoot\gatherosstate.exe"
+Remove-Item -Force "$PSScriptRoot\slc.dll"
+Copy-Item -Force "$PSScriptRoot\bin\$($arm64_file)gatherosstate.exe" "$PSScriptRoot\gatherosstate.exe"
+Copy-Item -Force "$PSScriptRoot\bin\$($arm64_file)slc.dll" "$PSScriptRoot\slc.dll"
+
 $RequiredFiles = @(
     'gatherosstate.exe'
     'slc.dll'
